@@ -1,4 +1,5 @@
-Reference: [CjangCjengh/tacotron2-japanese](https://github.com/CjangCjengh/tacotron2-japanese)
+# First of all, many thanks to the author: [@CjangCjengh](https://github.com/CjangCjengh) for the code and reference implementation! This repository is some corrections to the source project, to correct some errors, and will be improved and optimized from time to time.
+* Reference: [CjangCjengh/tacotron2-japanese](https://github.com/CjangCjengh/tacotron2-japanese)
 
 ## How to use
 1. Put raw Japanese texts in ./filelists
