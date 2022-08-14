@@ -1,4 +1,4 @@
-Reference: [NVIDIA/tacotron2](https://github.com/NVIDIA/tacotron2)
+Reference: [CjangCjengh/tacotron2-japanese](https://github.com/CjangCjengh/tacotron2-japanese)
 
 ## How to use
 1. Put raw Japanese texts in ./filelists
