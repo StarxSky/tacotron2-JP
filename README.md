@@ -7,7 +7,43 @@
 3. (Optional) Download NVIDIA's [pretrained model](https://drive.google.com/file/d/1c5ZTuT7J08wLUoVZ2KkUs_VdZuJ86ZqA/view?usp=sharing)
 4. Open ./train.ipynb to install requirements and start training
 5. Download NVIDIA's [WaveGlow model](https://drive.google.com/open?id=1rpK8CzAAirq9sWZhe9nlfvxMF1dRgFbF) or [WaveGlow model](https://sjtueducn-my.sharepoint.com/:u:/g/personal/cjang_cjengh_sjtu_edu_cn/EbyZnGnCJclGl5q_M3KGWTUBq4IIqSLiGznFdqHbv3WM5A?e=8c2aWE) based on Ayachi Nene
-6. Open ./inference.ipynb to generate voice
+6. The pre-trained tacotron2 model is shown in [this](https://github.com/StarxSky/tacotron2-JP#models).
+7. Open ./inference.ipynb to generate voice(Please remember to modify the corresponding path where the model is stored！！)
+
+
+- ```Inference.ipynb```
+```python
+checkpoint_path = 'tacotron2_Model\\ayachi_nene_1'#"ayachi_nene_1"
+model = load_model(hparams)
+
+if torch.cuda.is_available() :
+    model.load_state_dict(torch.load(checkpoint_path)['state_dict'])
+    model.to(device).eval()
+else :
+    model.load_state_dict(torch.load(checkpoint_path, map_location='cpu')['state_dict'])
+    model.to(device).eval()
+
+```
+
+- ```Inference.ipynb```
+```python
+waveglow_path = 'W_Model\\model' #waveglow model
+if hparams.cuda_enabled :
+    waveglow = torch.load(waveglow_path)['model']
+    waveglow.cuda().eval()#.half()
+else :
+    waveglow = torch.load(waveglow_path, map_location='cpu')['model']
+    waveglow.to(device).eval()#.half()
+
+
+for k in waveglow.convinv:
+    k.float()
+denoiser = Denoiser(waveglow)
+
+
+```
+
+
 
 ## Cleaners
 File ./hparams.py line 30
