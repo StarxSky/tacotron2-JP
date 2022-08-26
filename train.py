@@ -8,6 +8,7 @@ import torch.distributed as dist
 
 from numpy import finfo
 from model import Tacotron2
+from torch.backends import mps
 from torch.backends import cudnn
 from hparams import create_hparams
 from logger import Tacotron2Logger
